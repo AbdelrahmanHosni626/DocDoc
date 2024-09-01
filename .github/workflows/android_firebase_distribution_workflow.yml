@@ -25,12 +25,15 @@ jobs:
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.4'
+          ruby-version: 3.2.4
           bundler-cache: true
           working-directory: android
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter build apk --release --no-tree-shake-icons
+      - uses: actions/upload-artifact@v4.3.6
         with:
           name: DocDoc App
           path: build/app/outputs/apk/release
