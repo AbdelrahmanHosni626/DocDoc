@@ -12,7 +12,7 @@ platform :android do
       android_artifact_type: "APK",
       android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
       testers: "abdelrahman.hosni.20@gmail.com",
-      release_notes: "Second Fast Lane Firebase Distribution Release",
+      release_notes: "Third Fast Lane Firebase Distribution Release",
     )
   end
 end
