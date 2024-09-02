@@ -1,5 +1,5 @@
-import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/core/utils/assets_manager.dart';
+import 'package:docdoc/settings/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

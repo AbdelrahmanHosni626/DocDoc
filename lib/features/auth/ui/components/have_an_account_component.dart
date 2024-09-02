@@ -1,4 +1,4 @@
-import 'package:docdoc/core/theming/styles.dart';
+import 'package:docdoc/settings/theming/styles.dart';
 import 'package:flutter/material.dart';
 
 class HaveAccountComponent extends StatelessWidget {

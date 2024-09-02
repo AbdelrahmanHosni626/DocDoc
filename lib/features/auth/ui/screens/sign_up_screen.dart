@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/features/auth/cubits/auth_cubit.dart';
 import 'package:docdoc/features/auth/cubits/auth_state.dart';
 import 'package:docdoc/features/auth/ui/components/form_field_component.dart';
 import 'package:docdoc/features/auth/ui/components/have_an_account_component.dart';
 import 'package:docdoc/features/shared/widgets/docdoc_snack_bar.dart';
 import 'package:docdoc/settings/router/app_router.gr.dart';
+import 'package:docdoc/settings/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

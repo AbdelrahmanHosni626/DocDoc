@@ -1,11 +1,11 @@
 import 'package:docdoc/core/helpers/app_regex.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
-import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/features/auth/cubits/auth_cubit.dart';
 import 'package:docdoc/features/auth/data/models/login_request_body.dart';
 import 'package:docdoc/features/auth/data/models/register_request_body.dart';
 import 'package:docdoc/features/shared/widgets/docdoc_primary_button.dart';
 import 'package:docdoc/features/shared/widgets/docdoc_text_form_field.dart';
+import 'package:docdoc/settings/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
