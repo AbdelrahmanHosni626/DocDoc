@@ -12,6 +12,7 @@ class _ApiService implements ApiService {
   _ApiService(
     this._dio, {
     this.baseUrl,
+    this.errorLogger,
   }) {
     baseUrl ??= 'https://vcare.integration25.com/api/';
   }
@@ -19,6 +20,8 @@ class _ApiService implements ApiService {
   final Dio _dio;
 
   String? baseUrl;
+
+  final ParseErrorLogger? errorLogger;
 
   @override
   Future<LoginResponse> login(LoginRequestBody loginRequestBody) async {
@@ -47,7 +50,8 @@ class _ApiService implements ApiService {
     late LoginResponse _value;
     try {
       _value = LoginResponse.fromJson(_result.data!);
-    } on Object {
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
@@ -81,7 +85,8 @@ class _ApiService implements ApiService {
     late RegisterResponse _value;
     try {
       _value = RegisterResponse.fromJson(_result.data!);
-    } on Object {
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
       rethrow;
     }
     return _value;
