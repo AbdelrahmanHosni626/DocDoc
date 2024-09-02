@@ -12,4 +12,6 @@ class AssetsManager {
       "$_onBoardingPath/onboarding_doctor.png";
 
   static const String avatar = "$_homePath/avatar.png";
+  static const String homePattern = "$_homePath/home_pattern.png";
+  static const String cardDoctor = "$_homePath/card_doctor.png";
 }
