@@ -12,6 +12,6 @@ abstract class InjectionModule {
   @factory
   Dio get dioClient => Dio();
 
-  @factory
+  @lazySingleton
   ApiService get apiService => ApiService(dioClient);
 }
