@@ -17,7 +17,7 @@ class SpecialityComponent extends StatelessWidget {
           onTextButtonTap: () {},
         ),
         SizedBox(
-          height: 100.h,
+          height: 85.h,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             itemCount: 10,

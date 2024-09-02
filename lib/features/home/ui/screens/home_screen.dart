@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:docdoc/core/helpers/spacing.dart';
 import 'package:docdoc/core/utils/assets_manager.dart';
+import 'package:docdoc/features/home/ui/components/home_screen/recommendation/recommendation_section.dart';
 import 'package:docdoc/features/home/ui/components/home_screen/speciality/speciality_component.dart';
 import 'package:docdoc/features/shared/widgets/docdoc_primary_button.dart';
 import 'package:docdoc/settings/theming/colors.dart';
@@ -19,12 +20,14 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(20, 16, 20, 28).r,
-          child: ListView(
+          child: Column(
             children: [
               homeAppBar(),
               homeCard(),
               verticalSpace(24),
               const SpecialityComponent(),
+              verticalSpace(18),
+              const RecommendationSection(),
             ],
           ),
         ),
