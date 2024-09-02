@@ -37,9 +37,9 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Center(
             child: BlocConsumer<AuthCubit, AuthState>(
               listenWhen: (previous, current) =>
-                  previous is Loading != current is Loading ||
-                  previous is Success != current is Success ||
-                  previous is Failure != current is Failure,
+                  current is LoginLoading ||
+                  current is LoginSuccess ||
+                  current is LoginFailure,
               listener: (context, state) {
                 buildLoginListener(context, state);
               },
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       text: "Don't have an account? ",
                       textButton: "Sign Up",
                       onPressed: () {
-                        context.pushRoute(const RegisterRoute());
+                        context.replaceRoute(const RegisterRoute());
                       },
                     ),
                   ],
@@ -109,15 +109,15 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void buildLoginListener(BuildContext context, AuthState state) {
-    state.whenOrNull(loading: () {
+    state.whenOrNull(loginLoading: () {
       isLoading.value = true;
-    }, success: (data) {
+    }, loginSuccess: (data) {
       isLoading.value = false;
       DocDocSnackBar.success(
         context: context,
         message: "Logged In Successfully",
       );
-    }, failure: (errorMessage) {
+    }, loginFailure: (errorMessage) {
       isLoading.value = false;
       DocDocSnackBar.error(
         context: context,

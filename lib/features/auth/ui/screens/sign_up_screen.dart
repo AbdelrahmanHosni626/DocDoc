@@ -34,9 +34,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       body: SafeArea(
         child: BlocConsumer<AuthCubit, AuthState>(
           listenWhen: (previous, current) =>
-              previous is Loading != current is Loading ||
-              previous is Success != current is Success ||
-              previous is Failure != current is Failure,
+              current is RegisterLoading ||
+              current is RegisterSuccess ||
+              current is RegisterFailure,
           listener: (context, state) {
             buildRegisterListener(context, state);
           },
@@ -69,7 +69,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       text: "Already have an account? ",
                       textButton: "Login",
                       onPressed: () {
-                        context.pushRoute(const LoginRoute());
+                        context.replaceRoute(const LoginRoute());
                       },
                     ),
                   ],
@@ -84,13 +84,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   void buildRegisterListener(BuildContext context, AuthState state) {
     state.whenOrNull(
-      loading: () {
+      registerLoading: () {
         isLoading.value = true;
       },
-      success: (data) {
+      registerSuccess: (data) {
         isLoading.value = false;
       },
-      failure: (errorMessage) {
+      registerFailure: (errorMessage) {
         isLoading.value = false;
         DocDocSnackBar.error(
           context: context,

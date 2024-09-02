@@ -6,9 +6,17 @@ part 'auth_state.freezed.dart';
 class AuthState<T> with _$AuthState<T> {
   const factory AuthState.initial() = _Initial;
 
-  const factory AuthState.loading() = Loading;
+  const factory AuthState.loginLoading() = LoginLoading;
 
-  const factory AuthState.success(T data) = Success;
+  const factory AuthState.loginSuccess(T data) = LoginSuccess;
 
-  const factory AuthState.failure({required String errMessage}) = Failure;
+  const factory AuthState.loginFailure({required String errMessage}) =
+      LoginFailure;
+
+  const factory AuthState.registerLoading() = RegisterLoading;
+
+  const factory AuthState.registerSuccess(T data) = RegisterSuccess;
+
+  const factory AuthState.registerFailure({required String errMessage}) =
+      RegisterFailure;
 }

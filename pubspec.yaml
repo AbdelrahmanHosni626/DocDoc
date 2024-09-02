@@ -39,6 +39,7 @@ dependencies:
   json_annotation: ^4.9.0
   dio: ^5.3.3
   retrofit: ^4.0.3
+  logger: any
   retrofit_generator: ^8.0.4
   intl: ^0.19.0
   easy_localization: ^3.0.3

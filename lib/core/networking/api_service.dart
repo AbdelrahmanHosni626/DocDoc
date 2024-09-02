@@ -3,6 +3,7 @@ import 'package:docdoc/features/auth/data/models/login_request_body.dart';
 import 'package:docdoc/features/auth/data/models/login_response.dart';
 import 'package:docdoc/features/auth/data/models/register_request_body.dart';
 import 'package:docdoc/features/auth/data/models/register_response.dart';
+import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 import 'api_constants.dart';
