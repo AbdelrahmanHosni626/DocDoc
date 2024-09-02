@@ -12,7 +12,7 @@ class AppRouter extends RootStackRouter {
   List<AutoRoute> get routes => [
         AutoRoute(
           page: UnAuthenticatedRoute.page,
-          initial: true,
+          // initial: true,
           children: [
             CustomRoute(
               initial: true,
@@ -32,6 +32,18 @@ class AppRouter extends RootStackRouter {
             ),
           ],
         ),
+        AutoRoute(
+          page: AuthenticatedRoute.page,
+          initial: true,
+          children: [
+            CustomRoute(
+              initial: true,
+              page: HomeRoute.page,
+              transitionsBuilder: TransitionsBuilders.fadeIn,
+              durationInMilliseconds: 300,
+            ),
+          ],
+        ),
       ];
 }
 
@@ -46,4 +58,9 @@ class UnAuthenticated extends AutoRouter implements AutoRouteWrapper {
       child: this,
     );
   }
+}
+
+@RoutePage(name: "AuthenticatedRoute")
+class Authenticated extends AutoRouter {
+  const Authenticated({super.key});
 }

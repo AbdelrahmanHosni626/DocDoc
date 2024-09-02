@@ -9,4 +9,5 @@ class ColorsManager {
   static const Color moreLightGrey = Color(0xFFFDFDFF);
   static const Color successColor = Color(0xFF00DB16);
   static const Color errorColor = Color(0xFFFF0000);
+  static const Color moreLighterGray = Color(0xFFF5F5F5);
 }
