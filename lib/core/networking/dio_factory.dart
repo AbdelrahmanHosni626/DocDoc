@@ -1,35 +1,34 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
+import 'package:docdoc/core/injection/injection.dart';
+import 'package:docdoc/core/networking/api_constants.dart';
+import 'package:docdoc/core/networking/api_status_codes.dart';
+import 'package:docdoc/core/networking/dio_log_interceptor.dart';
+import 'package:flutter/foundation.dart';
 
-class DioFactory {
-  DioFactory._();
+abstract class DioFactory {
+  final Dio dioClient;
 
-  static Dio? dio;
-
-  static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 30);
-    if (dio == null) {
-      dio = Dio();
-
-      dio!
-        ..options.connectTimeout = timeOut
-        ..options.receiveTimeout = timeOut;
-      addDioInterceptors();
-      return dio!;
-    } else {
-      return dio!;
+  DioFactory({required this.dioClient}) {
+    // Fix for dio handshake error
+    (dioClient.httpClientAdapter as IOHttpClientAdapter).createHttpClient = () {
+      final dioClient = HttpClient();
+      dioClient.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return dioClient;
+    };
+    // dio validation
+    dioClient.options
+      ..baseUrl = ApiConstants.apiBaseUrl
+      ..responseType = ResponseType.plain
+      ..followRedirects = false
+      ..validateStatus = (status) {
+        return status! < ApiStatusCodes.internalServerError;
+      };
+    if (kDebugMode) {
+      dioClient.interceptors.add(getIt<DioLogInterceptor>());
     }
-  }
-
-  static void addDioInterceptors() {
-    dio?.interceptors.add(
-      LogInterceptor(
-        request: true,
-        requestBody: true,
-        requestHeader: true,
-        responseHeader: true,
-        responseBody: true,
-        error: true,
-      ),
-    );
   }
 }
