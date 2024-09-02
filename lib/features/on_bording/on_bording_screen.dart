@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:docdoc/core/theming/styles.dart';
 import 'package:docdoc/features/on_bording/widgets/doc_logo_and_name.dart';
 import 'package:docdoc/features/on_bording/widgets/doctor_image_and_text.dart';
 import 'package:docdoc/features/shared/widgets/docdoc_primary_button.dart';
 import 'package:docdoc/settings/router/app_router.gr.dart';
+import 'package:docdoc/settings/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
